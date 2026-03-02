@@ -23,6 +23,23 @@ Open:
 
 - `http://localhost:3000`
 
+## Deploy to Vercel
+
+This project is ready for Vercel with serverless Express routing.
+
+Vercel setup:
+
+- Framework Preset: `Other`
+- Root Directory: project root
+- Install Command: `npm install`
+- Build Command: leave empty
+- Output Directory: leave empty
+
+The repository includes:
+
+- `api/index.js` as Vercel serverless entrypoint
+- `vercel.json` rewrites all routes to `api/index.js`
+
 ## CLI Mode (Optional)
 
 Generate using JSON file:
