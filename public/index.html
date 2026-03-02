@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invoice Studio</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="kicker">Invoice Generator</p>
+          <h1>Invoice Studio</h1>
+          <p class="sub">Fast editor with 1:1 PDF live preview</p>
+        </div>
+        <div class="topbar-actions">
+          <button id="importTemplateBtn" type="button" class="btn ghost">Import JSON</button>
+          <button id="exportTemplateBtn" type="button" class="btn ghost">Export JSON</button>
+          <button id="resetBtn" type="button" class="btn ghost">Reset</button>
+          <button id="downloadBtn" type="button" class="btn primary">Download PDF</button>
+          <input id="importTemplateInput" type="file" accept="application/json,.json" hidden />
+        </div>
+      </header>
+
+      <section class="workspace">
+        <section class="editor" id="invoiceForm">
+          <article class="card">
+            <h2>Business Details</h2>
+            <div class="grid two">
+              <label>
+                Business name
+                <input id="businessName" type="text" />
+              </label>
+              <label>
+                Invoice number
+                <input id="invoiceNumber" type="text" />
+              </label>
+            </div>
+            <label>
+              Business address
+              <textarea id="businessAddress" rows="3"></textarea>
+            </label>
+            <div class="grid three">
+              <label>
+                Invoice date
+                <input id="invoiceDate" type="date" />
+              </label>
+              <label>
+                Due date
+                <input id="dueDate" type="date" />
+              </label>
+              <label>
+                Currency
+                <input id="currency" type="text" placeholder="USD" />
+              </label>
+            </div>
+          </article>
+
+          <article class="card">
+            <h2>Bill To</h2>
+            <label>
+              Client name
+              <input id="billName" type="text" />
+            </label>
+            <label>
+              Client address
+              <textarea id="billAddress" rows="3"></textarea>
+            </label>
+          </article>
+
+          <article class="card">
+            <div class="row-between">
+              <h2>Items</h2>
+              <button id="addItemBtn" type="button" class="btn secondary">+ Add Item</button>
+            </div>
+            <div id="itemsContainer" class="items"></div>
+            <div class="totals-inline">
+              <span>Subtotal</span>
+              <strong id="subtotalPreview">0.00 USD</strong>
+            </div>
+          </article>
+
+          <article class="card">
+            <h2>Notes & Payment</h2>
+            <label>
+              Additional notes
+              <textarea id="additionalNotes" rows="2"></textarea>
+            </label>
+            <label>
+              Payment terms
+              <input id="paymentTerms" type="text" />
+            </label>
+            <label>
+              Payment instruction title
+              <input id="instructionTitle" type="text" />
+            </label>
+            <div class="grid three">
+              <label>
+                Bank
+                <input id="bank" type="text" />
+              </label>
+              <label>
+                Account name
+                <input id="accountName" type="text" />
+              </label>
+              <label>
+                Account number
+                <input id="accountNumber" type="text" />
+              </label>
+            </div>
+            <label>
+              Contact email
+              <input id="contactEmail" type="email" />
+            </label>
+          </article>
+
+          <article class="card style-card">
+            <div class="row-between style-head">
+              <div>
+                <h2>Visual Theme</h2>
+                <p class="style-hint">Start with a preset, then fine tune the palette.</p>
+              </div>
+              <div class="preset-row">
+                <button class="chip" data-preset="blue" type="button">Blue</button>
+                <button class="chip" data-preset="teal" type="button">Teal</button>
+                <button class="chip" data-preset="slate" type="button">Slate</button>
+              </div>
+            </div>
+            <div class="style-grid">
+              <label class="color-field"><span>Primary</span><input id="primaryColor" type="color" /></label>
+              <label class="color-field"><span>Header background</span><input id="primarySoftColor" type="color" /></label>
+              <label class="color-field"><span>Heading</span><input id="headingColor" type="color" /></label>
+              <label class="color-field"><span>Body text</span><input id="textColor" type="color" /></label>
+              <label class="color-field"><span>Muted text</span><input id="mutedColor" type="color" /></label>
+              <label class="color-field"><span>Border</span><input id="borderColor" type="color" /></label>
+              <label class="color-field"><span>Table header</span><input id="tableHeaderColor" type="color" /></label>
+              <label class="color-field"><span>Alternate row</span><input id="alternateRowColor" type="color" /></label>
+              <label class="color-field"><span>Total box</span><input id="totalBoxColor" type="color" /></label>
+            </div>
+          </article>
+        </section>
+
+        <aside class="preview-pane">
+          <div class="preview-header">
+            <div>
+              <p class="preview-label">Live Preview</p>
+              <p id="statusText" class="status">Loading preview...</p>
+            </div>
+          </div>
+          <div class="preview-wrap" id="previewWrap">
+            <div id="previewPages" class="preview-pages"></div>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      Developed by <a href="https://github.com/rizkaprayuda" target="_blank" rel="noopener noreferrer">https://github.com/rizkaprayuda</a>
+    </footer>
+
+    <template id="itemTemplate">
+      <article class="item-card">
+        <div class="grid four">
+          <label>
+            Item
+            <input data-field="name" type="text" />
+          </label>
+          <label>
+            Qty
+            <input data-field="quantity" type="number" min="0" step="1" />
+          </label>
+          <label>
+            Rate
+            <input data-field="rate" type="number" min="0" step="0.01" />
+          </label>
+          <label>
+            Amount
+            <input data-field="amount" type="text" readonly />
+          </label>
+        </div>
+        <div class="row-between">
+          <label class="grow">
+            Description
+            <input data-field="description" type="text" />
+          </label>
+          <button type="button" data-action="remove" class="btn danger">Remove</button>
+        </div>
+      </article>
+    </template>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="/app.js"></script>
+  </body>
+</html>

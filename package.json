@@ -1,0 +1,21 @@
+{
+  "name": "invoice-generator-pdf",
+  "version": "1.0.0",
+  "description": "Customizable invoice PDF generator using Node.js",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "generate": "node src/generate-invoice.js --input ./examples/invoice-data.json --output ./output/invoice.pdf",
+    "generate:default": "node src/generate-invoice.js",
+    "generate:custom": "node src/generate-invoice.js --input ./examples/custom-invoice.json --output ./output/custom-invoice.pdf"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.2.1",
+    "pdfkit": "^0.17.2"
+  }
+}

@@ -1,0 +1,48 @@
+module.exports = {
+  business: {
+    name: "Blue Harbor Creative LLC",
+    addressLines: ["1207 Maple Avenue", "Suite 310", "San Diego, CA 92101, USA"]
+  },
+  billTo: {
+    name: "Orion Apparel Group",
+    addressLines: ["455 Market Street", "San Francisco, CA 94105, USA"]
+  },
+  invoice: {
+    number: "INV-2026-001",
+    date: "February 3, 2026",
+    dueDate: "February 18, 2026",
+    currency: "USD"
+  },
+  items: [
+    {
+      name: "Vectorization Service",
+      description: "Font Digitization",
+      quantity: 14,
+      rate: 30
+    }
+  ],
+  notes: {
+    additionalNotes: "",
+    paymentTerms: "Net 30"
+  },
+  payment: {
+    instructionTitle: "Please send the payment to this address",
+    bank: "Fictional National Bank",
+    accountName: "Blue Harbor Creative LLC",
+    accountNumber: "987654321000"
+  },
+  contact: {
+    email: "billing@blueharborcreative.example"
+  },
+  style: {
+    primaryColor: "#1E63E9",
+    primarySoftColor: "#ECF3FF",
+    headingColor: "#111827",
+    textColor: "#253245",
+    mutedColor: "#6B7A90",
+    borderColor: "#D7DFEA",
+    tableHeaderColor: "#F3F6FB",
+    alternateRowColor: "#FBFCFF",
+    totalBoxColor: "#EEF4FF"
+  }
+};

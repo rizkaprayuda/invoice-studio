@@ -1,0 +1,54 @@
+{
+  "business": {
+    "name": "Blue Harbor Creative LLC",
+    "addressLines": ["1207 Maple Avenue", "Suite 310", "San Diego, CA 92101, USA"]
+  },
+  "billTo": {
+    "name": "Northpeak Type Studio",
+    "addressLines": ["88 Wellington Road", "Toronto, ON M5V 2A1, Canada"]
+  },
+  "invoice": {
+    "number": "INV-2026-021",
+    "date": "March 2, 2026",
+    "dueDate": "March 16, 2026",
+    "currency": "USD"
+  },
+  "items": [
+    {
+      "name": "Logo Vectorization",
+      "description": "High-detail shape cleanup + layers",
+      "quantity": 2,
+      "rate": 125
+    },
+    {
+      "name": "Font Character Expansion",
+      "description": "Add accented glyph set",
+      "quantity": 1,
+      "rate": 220
+    }
+  ],
+  "notes": {
+    "additionalNotes": "Deliverables include editable source and optimized exports.",
+    "paymentTerms": "Net 14"
+  },
+  "payment": {
+    "instructionTitle": "Please send the payment to this address",
+    "bank": "Fictional National Bank",
+    "accountName": "Blue Harbor Creative LLC",
+    "accountNumber": "987654321000"
+  },
+  "contact": {
+    "email": "billing@blueharborcreative.example"
+  },
+  "style": {
+    "primaryColor": "#0D9488",
+    "primarySoftColor": "#E8F8F5",
+    "headingColor": "#0F172A",
+    "textColor": "#334155",
+    "mutedColor": "#64748B",
+    "borderColor": "#DDE5ED",
+    "tableHeaderColor": "#F1F5F9",
+    "alternateRowColor": "#F8FAFC",
+    "totalBoxColor": "#EAF8F6"
+  }
+}
